@@ -182,10 +182,10 @@ class _MyHomePageState extends State<MyHomePage> {
       offset: new Offset(200, 200),
       backgroundColor: Theme.of(context).accentColor,
       child: new Icon(
-        Icons.ring_volume,
-        color: Colors.white,
+        Icons.audiotrack,
+        color: lightDfabColor,
       ),
-      onPressed: () => print('hello world'),
+      onPressed: () => changeBrightness(),
       appContext: context,
       appBar: appBar,
       data: 'desktop_mac',
