@@ -65,58 +65,62 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    
 
     return Scaffold(
       appBar: appBar,
       body: Stack (
           children: <Widget>[
-            Center (
-              child: Container(
-                width: 100.0,
-                height: 100.0,
-                decoration: new BoxDecoration(
-                  color: Colors.deepPurple,
-                  shape: BoxShape.circle,
-                ),
-                child: DragTarget(
-                    builder: (context, List<String> candidateData, rejectedData) {
-                      print('builder');
-                      return Center(
-                          child: Text(
-                            "Info",
-                            style: TextStyle(color: Colors.white, fontSize: 22.0),
-                          )
-                      );
-                    },
-                    onWillAccept: (data) {
-                      print('onWillAccept ' + data);
-                      return true;
-                    },
-                    onAccept: (data) {
-                      print('onAccept ' + data);
-                      if(data == 'desktop_mac'){
-                        _showDialog(
-                            'Music Video',
-                            'You had to expect this'
+            new Positioned (
+                child: new Align(
+                  alignment: FractionalOffset.bottomCenter,
+                  child: Container(
+                    width: 100.0,
+                    height: 100.0,
+                    decoration: new BoxDecoration(
+                      color: Colors.deepPurple,
+                      shape: BoxShape.circle,
+                      ),
+                    child: DragTarget(
+                      builder: (context, List<String> candidateData, rejectedData) {
+                        print('builder');
+                        return Center(
+                            child: Text(
+                              "Info",
+                              style: TextStyle(color: Colors.white, fontSize: 22.0),
+                            )
                         );
+                      },
+                      onWillAccept: (data) {
+                        print('onWillAccept ' + data);
                         return true;
-                      }
+                      },
+                      onAccept: (data) {
+                        print('onAccept ' + data);
+                        if(data == 'desktop_mac'){
+                          _showDialog(
+                              'Music Video',
+                              'You had to expect this'
+                          );
+                          return true;
+                        }
 
-                      if(data == 'wb_incandescent'){
-                        _showDialog(
-                            'Light Bulb',
-                            'Press to change from/to bright/dark mode'
-                        );
-                        return true;
-                      }
+                        if(data == 'wb_incandescent'){
+                          _showDialog(
+                              'Light Bulb',
+                              'Press to change from/to bright/dark mode'
+                          );
+                          return true;
+                        }
 
-                    },
-                    onLeave: (data) {
-                      print('onLeave' + data);
-                    }
+                      },
+                      onLeave: (data) {
+                        print('onLeave' + data);
+                      }
+                  ),
+                  )
                 ),
               ),
-            ),
             Stack(
               children: <Widget>[
                 getContextButton(),
