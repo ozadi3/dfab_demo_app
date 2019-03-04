@@ -114,18 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Stack(
               children: <Widget>[
-                DraggableFloatingActionButton(
-                  offset: new Offset(200, 200),
-                  backgroundColor: Theme.of(context).accentColor,
-                  child: new Icon(
-                    Icons.pregnant_woman,
-                    color: Colors.white,
-                  ),
-                  onPressed: () => print('hello world'),
-                  appContext: context,
-                  appBar: appBar,
-                  data: 'desktop_mac',
-                ), //
+                getContextButton(),
                 getLightDfab(),
               ],
             ),
@@ -185,6 +174,21 @@ class _MyHomePageState extends State<MyHomePage> {
       appContext: context,
       appBar: appBar,
       data: 'wb_incandescent',
+    );
+  }
+
+  DraggableFloatingActionButton getContextButton() {
+    return DraggableFloatingActionButton(
+      offset: new Offset(200, 200),
+      backgroundColor: Theme.of(context).accentColor,
+      child: new Icon(
+        Icons.ring_volume,
+        color: Colors.white,
+      ),
+      onPressed: () => print('hello world'),
+      appContext: context,
+      appBar: appBar,
+      data: 'desktop_mac',
     );
   }
 
