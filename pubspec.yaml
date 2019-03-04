@@ -16,6 +16,7 @@ dependencies:
   flutter:
     sdk: flutter
   dynamic_theme: ^1.0.1
+  url_launcher: ^5.0.1
   draggable_floating_button:
       path: ./draggable_floating_button
 

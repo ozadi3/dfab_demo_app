@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:draggable_floating_button/draggable_floating_button.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -72,7 +74,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Container(
                 width: 100.0,
                 height: 100.0,
-                color: Colors.deepPurple,
+                decoration: new BoxDecoration(
+                  color: Colors.deepPurple,
+                  shape: BoxShape.circle,
+                ),
                 child: DragTarget(
                     builder: (context, List<String> candidateData, rejectedData) {
                       print('builder');
@@ -91,8 +96,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       print('onAccept ' + data);
                       if(data == 'desktop_mac'){
                         _showDialog(
-                            'Correct',
-                            'This is a Computer'
+                            'Music Video',
+                            'You had to expect this'
                         );
                         return true;
                       }
@@ -162,6 +167,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   }
 
+  openYoutubeMusicVideo() async {
+    const url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   DraggableFloatingActionButton getLightDfab() {
     return DraggableFloatingActionButton(
       offset: new Offset(100, 100),
@@ -185,7 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Icons.audiotrack,
         color: lightDfabColor,
       ),
-      onPressed: () => changeBrightness(),
+      onPressed: () => openYoutubeMusicVideo(),
       appContext: context,
       appBar: appBar,
       data: 'desktop_mac',
