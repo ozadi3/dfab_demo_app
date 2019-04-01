@@ -1,7 +1,10 @@
 name: draggable_floating_button
-description: Draggable Floating Action Button Package
-version: 0.0.1
-author: Adi Oz <ozadi3@gmail.com>
+description: The Draggable Floating Action Button (aka. DFAB) can be created just like the Floating Action Button, but it also has a few cool features in addition.
+
+version: 0.1.0
+authors:
+- Adi Oz <ozadi3@gmail.com>
+- Tomer Ben Rachel <tomerpacific@gmail.com>
 homepage: https://flutter.dev
 
 environment:

@@ -19,7 +19,7 @@ const BoxConstraints _kExtendedSizeConstraints = BoxConstraints(
 );
 */
 
-const Offset _kDefaultOffset = Offset(0,0);
+const Offset _kDefaultOffset = Offset(0, 0);
 
 class _DefaultHeroTag {
   const _DefaultHeroTag();
@@ -28,7 +28,6 @@ class _DefaultHeroTag {
 }
 
 class DraggableFloatingActionButton extends StatefulWidget {
-
   DraggableFloatingActionButton({
     Key key,
     this.child,
@@ -47,7 +46,7 @@ class DraggableFloatingActionButton extends StatefulWidget {
     this.appContext,
     this.appBar,
     this.offset = _kDefaultOffset,
-  }) :  assert(elevation != null),
+  })  : assert(elevation != null),
         assert(highlightElevation != null),
         assert(mini != null),
         assert(shape != null),
@@ -55,7 +54,6 @@ class DraggableFloatingActionButton extends StatefulWidget {
         assert(appContext != null),
         _sizeConstraints = mini ? _kMiniSizeConstraints : _kSizeConstraints,
         super(key: key);
-
 
   final Widget child;
 
@@ -91,19 +89,16 @@ class DraggableFloatingActionButton extends StatefulWidget {
 
   final BoxConstraints _sizeConstraints;
 
-
   @override
   State<StatefulWidget> createState() => _DraggableFloatingActionButtonState();
-
 }
 
-class _DraggableFloatingActionButtonState extends State<DraggableFloatingActionButton> {
-
+class _DraggableFloatingActionButtonState
+    extends State<DraggableFloatingActionButton> {
   Offset dynamicOffset;
 
   @override
   Widget build(BuildContext context) {
-
     dynamicOffset = widget.offset;
 
     FloatingActionButton _floatingActionButton = new FloatingActionButton(
@@ -119,39 +114,33 @@ class _DraggableFloatingActionButtonState extends State<DraggableFloatingActionB
         shape: widget.shape,
         isExtended: widget.isExtended,
         materialTapTargetSize: widget.materialTapTargetSize,
-        clipBehavior: widget.clipBehavior
-    );
+        clipBehavior: widget.clipBehavior);
 
-    return  Positioned(
+    return Positioned(
         left: dynamicOffset.dx,
         top: dynamicOffset.dy,
         child: Draggable(
           child: _floatingActionButton,
           feedback: _floatingActionButton,
           childWhenDragging: Container(),
-          onDraggableCanceled:
-              (Velocity velocity, Offset offset) {
+          onDraggableCanceled: (Velocity velocity, Offset offset) {
             setState(() {
-              var dy =
-                  offset.dy - widget.appBar.preferredSize.height -
+              var dy = offset.dy -
+                  widget.appBar.preferredSize.height -
                   MediaQuery.of(widget.appContext).padding.top;
 
-              var maxDy =
-                  MediaQuery.of(widget.appContext).size.height -
-                      MediaQuery.of(widget.appContext).padding.bottom -
-                      widget.appBar.preferredSize.height -
-                      MediaQuery.of(widget.appContext).padding.top;
+              var maxDy = MediaQuery.of(widget.appContext).size.height -
+                  MediaQuery.of(widget.appContext).padding.bottom -
+                  widget.appBar.preferredSize.height -
+                  MediaQuery.of(widget.appContext).padding.top;
 
-              if(dy < 0) {
+              if (dy < 0) {
                 dy = 0;
-              } else if (dy > maxDy){
+              } else if (dy > maxDy) {
                 dy = maxDy - widget._sizeConstraints.maxHeight;
               }
 
-              Offset newOffset = new Offset(
-                  offset.dx,
-                  dy
-              );
+              Offset newOffset = new Offset(offset.dx, dy);
               dynamicOffset = newOffset;
             });
           },
