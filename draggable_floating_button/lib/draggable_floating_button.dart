@@ -119,7 +119,8 @@ class _DraggableFloatingActionButtonState
         shape: widget.shape,
         isExtended: widget.isExtended,
         materialTapTargetSize: widget.materialTapTargetSize,
-        clipBehavior: widget.clipBehavior);
+        clipBehavior: widget.clipBehavior,
+        mini: widget.mini);
 
     return Positioned(
         left: dynamicOffset.dx,
